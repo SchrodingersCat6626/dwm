@@ -29,7 +29,7 @@ static const Rule rules[] = {
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "librewolf", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "st-256color", NULL, NULL,	       0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
@@ -79,7 +79,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 /* custom commands; these are all executed in SHCMD() function seen above */
-static const char *browser[] = { "firefox", NULL };
+static const char *browser[] = { "librewolf", NULL };
 /* coding stuff */
 static const char *pythonshell[] = { "st", "python3", NULL };
 static const char *Rshell[] = { "st", "R", NULL };
@@ -113,7 +113,7 @@ static const char *amixer[] = { "st" ,"/usr/bin/alsamixer", NULL };
 /*opening htop */
 static const char *htop[] = { "st", "htop", NULL };
 /* shortcut to open src dir in vim */
-static const char configs[] = "nvim $HOME/src/";
+static const char configs[] = "st nvim $HOME/src/";
 
 /*including function from shiftview.c which allows cycling through tags */
 #include "shiftview.c"
