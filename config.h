@@ -28,8 +28,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "librewolf", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "librewolf", NULL,     NULL,         1 << 8,    0,        0,           -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "st-256color", NULL, NULL,	       0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
@@ -121,7 +120,8 @@ static const char configs[] = "st nvim $HOME/src/";
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	/* { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, */
+	{ MODKEY,                       XK_p,      spawn,          SHCMD( "rofi -theme dmenu -show run" ) },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY|ShiftMask,             XK_r, 	   spawn,          {.v = Rstudio } },
