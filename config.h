@@ -111,8 +111,8 @@ static const char togglepower[] = "$HOME/src/dwm/scripts/./powerprofilecontrol.s
 static const char *amixer[] = { "st" ,"/usr/bin/alsamixer", NULL };
 /*opening htop */
 static const char *htop[] = { "st", "htop", NULL };
-/* shortcut to open src dir in vim */
-static const char configs[] = "st nvim $HOME/src/";
+/* shortcut to opening calendar application */
+static const char calcurse[] = "st calcurse";
 
 /*including function from shiftview.c which allows cycling through tags */
 #include "shiftview.c"
@@ -171,7 +171,7 @@ static const Key keys[] = {
 	{ 0,				            XF86XK_MonBrightnessDown, spawn, SHCMD( light_down ) },
     { 0,				            Print,                    spawn, { .v = screenshot } },    
     { MODKEY,				        Print,                    spawn, SHCMD( fullscreenshot ) },
-    { MODKEY,				        XK_c,                     spawn, SHCMD( configs ) },
+    { MODKEY,				        XK_c,                     spawn, SHCMD( calcurse ) },
     { 0,				            XF86Favorites,            spawn, SHCMD( togglepower ) },
     { 0,                            XF86Tools,                spawn, { .v = amixer } },
     { 0,                            XF86Display,              spawn, SHCMD( "xrandr --auto" ) },	
