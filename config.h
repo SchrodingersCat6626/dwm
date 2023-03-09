@@ -113,6 +113,9 @@ static const char *amixer[] = { "st" ,"/usr/bin/alsamixer", NULL };
 static const char *htop[] = { "st", "htop", NULL };
 /* shortcut to opening calendar application */
 static const char calcurse[] = "st calcurse";
+/* for opening signal messaging application */
+static const char *signalapp[] = { "signal-desktop", NULL };
+
 
 /*including function from shiftview.c which allows cycling through tags */
 #include "shiftview.c"
@@ -129,6 +132,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p, 	   spawn,          {.v = pythonshell } },
     { MODKEY,                       XK_v, 	   spawn,          {.v = vim } },
 	{ MODKEY|ShiftMask,             XK_s, 	   spawn,          SHCMD( suspend ) },
+	{ MODKEY,                       XK_s, 	   spawn,          { .v = signalapp } },
 	{ MODKEY|ShiftMask,             XK_f, 	   spawn,          { .v = fileman } },
 	{ MODKEY|ShiftMask,        		XK_l, 	   spawn,          {.v = slockonly } },
 	{ MODKEY|ShiftMask,	            XK_m, 	   spawn,          SHCMD( mutt ) },
