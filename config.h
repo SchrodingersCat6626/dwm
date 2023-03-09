@@ -29,8 +29,8 @@ static const Rule rules[] = {
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "librewolf", NULL,     NULL,         1 << 8,    0,        0,           -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "st-256color", NULL, NULL,	       0,         0,          1,           0,        -1 },
+	{ "alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "alacritty-256color", NULL, NULL,	       0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -76,12 +76,12 @@ static const Layout layouts[] = {
 /* Note: since arrays will be passed into execvp, I cannot use path variables like $HOME or operators like & or &&. In the cases where those are required, it is better to use the SHCMD macro defined earlier in this file rather than a pointer to array. To keep it clean it is better to define the command as string literals and pass them into SHCMD in the keybinding section.  */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 /* custom commands; these are all executed in SHCMD() function seen above */
 static const char *browser[] = { "librewolf", NULL };
 /* coding stuff */
-static const char *pythonshell[] = { "st", "python3", NULL };
-static const char *Rshell[] = { "st", "R", NULL };
+static const char *pythonshell[] = { "alacritty", "-e", "python3", NULL };
+static const char *Rshell[] = { "alacritty", "-e", "R", NULL };
 static const char *Rstudio[] = { "rstudio", NULL };
 static const char *slockonly[] = { "slock", NULL };
 static const char suspend[] = "slock & systemctl suspend";
@@ -90,11 +90,11 @@ static const char volumedown[] = "amixer -D pulse sset Master 5%- && $HOME/src/d
 static const char togglemutecmd[] = "amixer -D pulse sset Master toggle && $HOME/src/dwm/scripts/./volumelevels.sh"; 
 static const char *togglemic[] = { "amixer", "sset", "Capture", "toggle", NULL };
 /* mail */
-static const char mutt[]  = "st neomutt & mbsync -a";
+static const char mutt[]  = "alacritty -e neomutt & mbsync -a";
 /* file manager */
-static const char *fileman[] = { "st", "ranger",  NULL };
+static const char *fileman[] = { "alacritty", "-e", "ranger",  NULL };
 /* text editing */
-static const char *vim[] = { "st", "nvim", NULL };
+static const char *vim[] = { "alacritty", "-e", "nvim", NULL };
 /* bluetooth is controlled at the hardware level by bluetooth function key. This runs a script which tells me bluetooth status everytime it is pressed */
 static const char bltstatus[] = "$HOME/src/dwm/scripts/./bluetoothcontrol.sh";
 /* prints wifi status in status bar when wifi switch is pressed (f8) */
@@ -108,11 +108,11 @@ static const char fullscreenshot[] = "$HOME/src/dwm/scripts/./fullscreenflamesho
 /* setting power profile and displaying it in status bar */
 static const char togglepower[] = "$HOME/src/dwm/scripts/./powerprofilecontrol.sh";
 /* opening amixer with tool button (F9) */
-static const char *amixer[] = { "st" ,"/usr/bin/alsamixer", NULL };
+static const char *amixer[] = { "alacritty" ,"/usr/bin/alsamixer", NULL };
 /*opening htop */
-static const char *htop[] = { "st", "htop", NULL };
+static const char *htop[] = { "alacritty", "-e", "htop", NULL };
 /* shortcut to opening calendar application */
-static const char calcurse[] = "st calcurse";
+static const char calcurse[] = "alacritty -e calcurse";
 /* for opening signal messaging application */
 static const char *signalapp[] = { "signal-desktop", NULL };
 
