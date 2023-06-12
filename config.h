@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 /* #646C74 */
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "1", "2", "3", "4", "5","6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -35,7 +35,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.62; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -92,7 +92,8 @@ static const char *togglemic[] = { "amixer", "sset", "Capture", "toggle", NULL }
 /* mail */
 static const char mutt[]  = "alacritty -e neomutt & mbsync -a";
 /* file manager */
-static const char *fileman[] = { "alacritty", "-e", "ranger",  NULL };
+/* static const char *fileman[] = { "alacritty", "-e", "ranger",  NULL }; */
+static const char *fileman[] = { "pcmanfm",  NULL };
 /* text editing */
 static const char *vim[] = { "alacritty", "-e", "nvim", NULL };
 /* bluetooth is controlled at the hardware level by bluetooth function key. This runs a script which tells me bluetooth status everytime it is pressed */
@@ -108,7 +109,7 @@ static const char fullscreenshot[] = "$HOME/src/dwm/scripts/./fullscreenflamesho
 /* setting power profile and displaying it in status bar */
 static const char togglepower[] = "$HOME/src/dwm/scripts/./powerprofilecontrol.sh";
 /* opening amixer with tool button (F9) */
-static const char *amixer[] = { "alacritty" ,"/usr/bin/alsamixer", NULL };
+static const char *amixer[] = { "alacritty", "-e", "/usr/bin/alsamixer", NULL };
 /*opening htop */
 static const char *htop[] = { "alacritty", "-e", "htop", NULL };
 /* shortcut to opening calendar application */
@@ -163,6 +164,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ 0,                            XF86XK_AudioMute,         spawn, SHCMD( togglemutecmd ) },
     { 0,                            XF86XK_AudioRaiseVolume,  spawn, SHCMD( volumeup ) },
