@@ -1,5 +1,10 @@
 #!/usr/bin/sh
 
+# Note: This script only works because F10 is the bluetooth button on my thinkpad. The function to disable bluetooth is 
+#not handled by this script (+ That would require sudo privileges.
+# This script simply displays the bluetooth status.
+
+
 bltstatus () {
 
     # if the adapter isn't found then bluetooth is turned off at the hardware level.
