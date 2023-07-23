@@ -85,9 +85,9 @@ static const char *Rshell[] = { "alacritty", "-e", "R", NULL };
 static const char *Rstudio[] = { "rstudio", NULL };
 static const char *slockonly[] = { "slock", NULL };
 static const char suspend[] = "slock & systemctl suspend";
-static const char volumeup[] = "amixer -D pulse sset Master 5%+ && $HOME/src/dwm/scripts/./volumelevels.sh";
-static const char volumedown[] = "amixer -D pulse sset Master 5%- && $HOME/src/dwm/scripts/./volumelevels.sh";  
-static const char togglemutecmd[] = "amixer -D pulse sset Master toggle && $HOME/src/dwm/scripts/./volumelevels.sh"; 
+static const char volumeup[] = "amixer sset Master 5%+ && $HOME/src/dwm/scripts/./volumelevels.sh";
+static const char volumedown[] = "amixer sset Master 5%- && $HOME/src/dwm/scripts/./volumelevels.sh";  
+static const char togglemutecmd[] = "amixer sset Master toggle && $HOME/src/dwm/scripts/./volumelevels.sh"; 
 static const char *togglemic[] = { "amixer", "sset", "Capture", "toggle", NULL };
 /* mail */
 static const char mutt[]  = "alacritty -e neomutt & mbsync -a";

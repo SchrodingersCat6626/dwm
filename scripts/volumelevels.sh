@@ -12,7 +12,7 @@ mastervolume() {
 
     else
 
-        echo "$(echo "$amixeroutput" | grep -oP -i '[0-9]*%')"
+        echo "$(echo "$amixeroutput" | grep -oP -i -m 1 '[0-9]*%')"
     
     
     fi
