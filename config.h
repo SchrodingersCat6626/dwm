@@ -101,8 +101,8 @@ static const char bltstatus[] = "$HOME/src/dwm/scripts/./bluetoothcontrol.sh";
 /* prints wifi status in status bar when wifi switch is pressed (f8) */
 static const char wifistatus[] = "$HOME/src/dwm/scripts/./wifistatus.sh";
 /* brightness control */
-static const char light_up[] = "/usr/bin/brightnessctl s +5% && $HOME/src/dwm/scripts/./brightnessstatus.sh";
-static const char light_down[] = "/usr/bin/brightnessctl s +5% && $HOME/src/dwm/scripts/./brightnessstatus.sh";
+static const char light_up[] = "/usr/bin/brightnessctl s 5%+ && $HOME/src/dwm/scripts/./brightnessstatus.sh";
+static const char light_down[] = "/usr/bin/brightnessctl s 5%- && $HOME/src/dwm/scripts/./brightnessstatus.sh";
 /* taking screenshot with flameshot */
 static const char *screenshot[] = { "flameshot", "gui", NULL };
 static const char fullscreenshot[] = "$HOME/src/dwm/scripts/./fullscreenflameshot.sh"; /* fullscreen screenshot saved to ~/Pictures/screenshots/ */
