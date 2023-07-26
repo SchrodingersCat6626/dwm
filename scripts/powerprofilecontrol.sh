@@ -4,7 +4,20 @@
 powerstatus (){
 
 
-   echo "$(powerprofilesctl get)"
+   echo "$(tuned-adm active)" # prints current powerprofile to stdout
+
+}
+
+getPowerprofile (){
+
+  # Returns the currently active powerprofile.
+  #
+  # Example stdout from tuned-adm active:
+  #     Current active profile: laptop-ac-powersave
+  #
+  # Awk isolated the 4th element (sep=spaces); the "laptop-ac-powersave" in this case.
+
+  echo "$(tuned-adm active | awk '{print $4}')"
 
 }
 
@@ -12,24 +25,26 @@ powerstatus (){
 
 toggleprofile (){
 
-    if [ "$(powerprofilesctl get)" = "balanced" ]; then 
+    if [ $(getPowerprofile) = "balanced" ]; then 
 
-        powerprofilesctl set performance
+        tuned-adm profile latency-performance
 
-    elif [ "$(powerprofilesctl get)" = "performance" ]; then
+    elif [ $(getPowerprofile) = "latency-performance" ]; then
 
-        powerprofilesctl set power-saver
+        tuned-adm profile laptop-battery-powersave
 
+    elif [ $(getPowerprofile) = "laptop-battery-powersave" ]; then
 
-    elif [ "$(powerprofilesctl get)" = "power-saver" ]; then
+        tuned-adm profile laptop-ac-powersave
 
-        powerprofilesctl set balanced
+    elif [ $(getPowerprofile) = "laptop-ac-powersave" ]; then
 
-    else
+        tuned-adm profile balanced
 
-        xsetroot -name " unknown profiles "
+    else # this condition could be met if tuned is set to off or some other profile
+      
+      tuned-adm auto_profile # will set to the balanced profile automatically.
 
-        exit 1
 fi
 
 
@@ -38,9 +53,8 @@ fi
 toggleprofile
 #pauses status bar
 kill -STOP $(pgrep statusbar.sh)
-sleep 0.5
-xsetroot -name " Setting power profile to: $(powerstatus) "
-sleep 0.5
+xsetroot -name " $(powerstatus) "
+sleep 1
 
 #This checks if there are more than one instances of the current script running. If there are it simply exits the current script. If this is the only instance, it will allow statusbar.sh to resume execution. This helps deal with glitchiness when the the script is invokes in rapid succession. (ex. I click the same keybinding multiple times quickly).
 
